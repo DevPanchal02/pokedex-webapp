@@ -40,7 +40,7 @@ let pokemon =  [
         "number": "006",
         "name": "Charizard",
         "type 1": "Fire",
-        "type 2": "" 
+        "type 2": "Flying" 
     },
     {
         "id": "6",
@@ -141,6 +141,18 @@ let pokemon =  [
         "type 2": "" 
     }
   ]
+
+//Data for pokemon type colors
+let typeColors = {
+    //pokemon types normal, fire, water, grass, poison, flying, bug
+    Normal: '#A8A77A',
+	Fire: '#EE8130',
+	Water: '#6390F0',
+	Grass: '#7AC74C',
+    Poison: '#A33EA1',
+    Flying: '#A98FF3',
+    Bug: '#A6B91A',
+}
   
 //For loop to go through the 20 pokemon and add each of their own boxes with their various descriptions
 for(let i = 0; i<20; i++){
@@ -159,10 +171,20 @@ let pokeInnerHtml = '<div class="img-container"> '
  +`       <br> `
  +`       <span class="name">${pkmn.name}</span> `
  +`       <br> `
- +`       <small class="type">Type: <span>Grass</span></small> `
+ +`       <span class="type1">${pkmn["type 1"]}</span> `
+ +`       <span class="type2">${pkmn["type 2"]}</span> `
  +`</div> ` ;
-
 pokeElement.innerHTML = pokeInnerHtml;
 poke_card.appendChild(pokeElement);
+
+//Adds CSS Styling for the pokemon type 1 dynamically though javascript
+document.getElementsByClassName("type1")[i].style.border = `2px solid ${typeColors[pkmn["type 1"]]}`;
+document.getElementsByClassName("type1")[i].style.background = `${typeColors[pkmn["type 1"]]}`;
+
+//Adds CSS Styling for the pokemon type 2 dynamically though javascript
+document.getElementsByClassName("type2")[i].style.border = `2px solid ${typeColors[pkmn["type 2"]]}`;
+document.getElementsByClassName("type2")[i].style.background = `${typeColors[pkmn["type 2"]]}`;
+
+
 };
 
