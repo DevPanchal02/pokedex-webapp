@@ -28,7 +28,7 @@ body {
 .pokemon {
     background-color: transparent;
     border-radius: 20px;
-    outline: 1px solid black;
+    outline: 2.5px solid black;
 }
 .pokemon .img-container {
     background-color: transparent;
