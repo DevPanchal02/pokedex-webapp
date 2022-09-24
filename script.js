@@ -1,3 +1,4 @@
+//Data used for the 20 Pokemon in this application
 let pokemon =  [
     {
         "id": "0",
@@ -140,29 +141,28 @@ let pokemon =  [
         "type 2": "" 
     }
   ]
-  console.log("Hello World");
-  let pkmn = pokemon.find(pokemon => pokemon.id == 19);
-  console.log(pkmn.name)
-  let num = "001";
-  console.log(num+1);
-
- let poke_card = document.getElementById('poke-card');
- let pokeElement = document.createElement("div");
- pokeElement.classList.add('pokemon');
-
+  
+//For loop to go through the 20 pokemon and add each of their own boxes with their various descriptions
+for(let i = 0; i<20; i++){
+    //stores pokemon from the Object array into the variable pkmn based on the ID Number thats assigned
+    let pkmn = pokemon.find(pokemon => pokemon.id == i);
+    //variables to help create the HTML Elements
+    let poke_card = document.getElementById('poke-card');
+    let pokeElement = document.createElement("div");
+    pokeElement.classList.add('pokemon');
+//Creates the HTML Elements dynamically from javaScript and inserts all pokemon into an unOrdered List
 let pokeInnerHtml = '<div class="img-container"> '
- + '<img src="images/1.png" alt=""> '
- +'</div> '
- +'<div class="info"> '
- +'     <span class="number">#001</span> '
- +'       <br> '
- +'       <span class="name">Bulbasaur</span> '
- +'       <br> '
- +'       <small class="type">Type: <span>Grass</span></small> '
- +'</div> ' ;
+ + `<img src="images/${i+1}.png" alt=""> `
+ +`</div> `
+ +`<div class="info"> `
+ +`     <span class="number">${pkmn.number}</span> `
+ +`       <br> `
+ +`       <span class="name">${pkmn.name}</span> `
+ +`       <br> `
+ +`       <small class="type">Type: <span>Grass</span></small> `
+ +`</div> ` ;
 
 pokeElement.innerHTML = pokeInnerHtml;
 poke_card.appendChild(pokeElement);
-
-
+};
 
