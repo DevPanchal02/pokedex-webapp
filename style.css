@@ -1,0 +1,58 @@
+h1{
+    color: black;
+    letter-spacing: 2.5px;
+}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: antiquewhite;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0%;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.poke-card {
+    display: inline-flex;
+    flex-wrap: wrap-reverse;
+    align-items: space-between;
+    padding-bottom: 12px;
+    padding-right: 5px;
+    
+}
+.pokemon {
+    background-color: transparent;
+    border-radius: 20px;
+    outline: 1px solid black;
+}
+.pokemon .img-container {
+    background-color: transparent;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+}
+.pokemon .img-container img{
+    max-width: 75%;
+    margin-top: 35px;
+}
+.info {
+    font-size: 80%;
+}
+.info .name{
+    position:relative; right: -70px;
+    position: relative; top: -210px;;
+    font-size: 120%;
+}
+.info .number{
+    position: relative; right: -90px;
+}
+.info .type {
+    position: relative; right: -50px;
+    position: relative; top: -10px;
+}
