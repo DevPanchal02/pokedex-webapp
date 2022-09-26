@@ -43,6 +43,9 @@ nav ul .search {
     position: relative; bottom: -5px;
 
 }
+::placeholder {
+    color: black;
+}
 /*Adds styling to the nav bars search input section*/
 nav ul .search input{
     height: 100%;
@@ -53,6 +56,7 @@ nav ul .search input{
     color: black;
     border: solid black;
     background-color: rgba(0, 0, 0, 0.02);
+    
 
     border-radius: 5px 0 0 5px;
     font-size: 16;
