@@ -3,23 +3,22 @@
 <head>
     <title>Pokedex</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
 
 <body>
     <nav>
         <ul>
-            <li class="search">
-                <input type="search" placeholder="Search Name">
+            <li class="search", id="search1">
+                <input type="search" placeholder="Search Name" id="searchValName">
                 <label class="icon">
-                    <button type="submit">Go</button>
+                    <button type="submit", id="buttonName">Go</button>
                 </label>
             </li>
             <li class="logo">Dev's Pokedex</li>
-                <li class="search">
-                    <input type="search" placeholder="Search Index">
+                <li class="search", id="search2">
+                    <input type="search" placeholder="Search Index" id="searchValIndex">
                     <label class="icon2">
-                        <button type="submit">Go</button>
+                        <button type="submit" id="buttonIndex">Go</button>
                     </label>
                 </li>
         </ul>
@@ -28,5 +27,6 @@
  <ul>
     <div class="poke-card" id="poke-card"></div>
  </ul>
+ <script src="script.js" defer></script>
 </body>
 </html>

@@ -153,6 +153,10 @@ let typeColors = {
     Flying: '#A98FF3',
     Bug: '#A6B91A',
 }
+let searchIndex;
+let searchName;
+let buttonName;
+let buttonIndex;
   
 //For loop to go through the 20 pokemon and add each of their own boxes with their various descriptions
 for(let i = 0; i<20; i++){
@@ -185,6 +189,28 @@ document.getElementsByClassName("type1")[i].style.background = `${typeColors[pkm
 document.getElementsByClassName("type2")[i].style.border = `2px solid ${typeColors[pkmn["type 2"]]}`;
 document.getElementsByClassName("type2")[i].style.background = `${typeColors[pkmn["type 2"]]}`;
 
-
+//Search Functionality for Names
+buttonName = document.querySelectorAll("button")[0];
+buttonName.onclick = () => {
+    searchName = document.getElementById('searchValName').value;
+    if (!/^[a-zA-Z]+$/.test(searchName)){   
+    alert("Please enter between A-Z and a-z");
+    }
+    else {
+    alert(searchName); 
+    }
 };
+//Search Functionality for Index Number
+buttonIndex = document.querySelectorAll("button")[1];
+buttonIndex.onclick = () => {
+    searchIndex = document.getElementById('searchValIndex').value;    
+    if (!/^[1-20]+$/.test(searchIndex)){ 
+    alert("Please enter a number between 1-20");
+    }
+    else {
+        alert(searchIndex)
+    }
+    
+};
+}
 
