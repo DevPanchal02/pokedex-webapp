@@ -197,20 +197,19 @@ buttonName.onclick = () => {
     alert("Please enter between A-Z and a-z");
     }
     else {
-    alert(searchName); 
+        alert(" Name:"+pokemon.find(pokemon => pokemon.name == searchName).name + " \n Type1 :" +pokemon.find(pokemon => pokemon.name == searchName)["type 1"]+ " \n Type2 :" + pokemon.find(pokemon => pokemon.name == searchName)["type 2"] + " \n Index :" +pokemon.find(pokemon => pokemon.name == searchName).number);
     }
 };
 //Search Functionality for Index Number
 buttonIndex = document.querySelectorAll("button")[1];
 buttonIndex.onclick = () => {
     searchIndex = document.getElementById('searchValIndex').value;    
-    if (!/^[1-20]+$/.test(searchIndex)){ 
-    alert("Please enter a number between 1-20");
+    if (!searchIndex > 0 && !searchIndex < 21){ 
+    alert("Please enter a number between 001-020");
     }
     else {
-        alert(searchIndex)
+        alert(" Name:"+pokemon.find(pokemon => pokemon.number == searchIndex).name + " \n Type1 :" +pokemon.find(pokemon => pokemon.number == searchIndex)["type 1"]+ " \n Type2 :" + pokemon.find(pokemon => pokemon.number == searchIndex)["type 2"]+ " \n Index :" +pokemon.find(pokemon => pokemon.number == searchIndex).number);
     }
-    
 };
 }
 
