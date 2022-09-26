@@ -1,10 +1,13 @@
 
+/*Adds font and styling to all elements */
 *{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
     font-family: 'Helvetica Neue', Helvetica, sans-serif
 }
+
+/*Adds styling to the navbar */
 nav{
     padding-left: 10%;
     padding-right: 10%;
@@ -15,12 +18,15 @@ nav{
 
   
 }
+
+/*Adds styling to the nav bars unordered elements*/
 nav ul {
     display: flex;
     list-style: none;
     flex-wrap: wrap;
     justify-content: center;
 }
+/*Adds styling to the nav bars logo*/
 nav ul li.logo {
     flex: 1;
     font-size: 45px;
@@ -28,6 +34,7 @@ nav ul li.logo {
     letter-spacing: 4px;
     text-align: center;
 }
+/*Adds styling to the nav bars search*/
 nav ul .search {
     height: 40px;
     width: 240px;
@@ -36,7 +43,7 @@ nav ul .search {
     position: relative; bottom: -5px;
 
 }
-
+/*Adds styling to the nav bars search input section*/
 nav ul .search input{
     height: 100%;
     width: 200%;
@@ -49,16 +56,7 @@ nav ul .search input{
     border-radius: 5px 0 0 5px;
     font-size: 16;
 }
-nav ul .search2 input{
-    height: 100%;
-    width: 200%;
-    border: none;
-    padding: 0 10px;
-    outline: none;
-    color: black;
-    border-radius: 5px 0 0 5px;
-    font-size: 16;
-}
+/*Adds styling to the buttons used to search*/
 button {
     border: none;
     color: white;
@@ -70,7 +68,7 @@ button {
     font-size: 10px;
     border-radius: 1px;
 }
-
+/*Adds styling to the overall body*/
 body {
     background: #efefbb;
     background: linear-gradient(to right, #d4d3dd, #efefbb);
@@ -81,11 +79,7 @@ body {
     justify-content: center;
     margin: 0;
 }
-h1 {
-    letter-spacing: 3px;
-    display: flex;
-    justify-content: center;
-}
+/*Adds styling to the pokemon cards*/
 .poke-card {
     display: inline-flex;
     flex-wrap: wrap;
@@ -93,12 +87,14 @@ h1 {
     justify-content: center;
     margin: 0 ;
 }
+/*Adds styling to the container*/
 .pokemon {
     border-radius: 15px;
     border: 2.5px solid black;
     margin: 50px;
     padding-bottom: 0.5;    
 }
+/*Adds styling to the image container*/
 .pokemon .img-container {
     margin-top: 55px;
     background-color: rgba(238, 238, 238, 0.45);
@@ -108,14 +104,17 @@ h1 {
     text-align: center;
     
 }
+/*Adds styling to the images*/
 .pokemon .img-container img {
     max-width: 85%;
     margin-top: 15px;
 }
+/*Adds styling to the pokemon index number*/
 .number { 
     font-size: 180%;
     position: relative; right: -100px;bottom: -10px;
 }
+/*Adds styling to the pokemon names*/
 .name {
     font-size: 190%;
     text-align: center;
@@ -124,6 +123,7 @@ h1 {
     position: relative; top: -330px;
     
 }
+/*Adds styling to the pokemon types*/
 .type1 {
     font-size: 100%;
     display: inline-block;

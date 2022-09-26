@@ -153,6 +153,7 @@ let typeColors = {
     Flying: '#A98FF3',
     Bug: '#A6B91A',
 }
+//declares variables used
 let searchIndex;
 let searchName;
 let buttonName;
