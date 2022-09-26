@@ -13,9 +13,9 @@ nav{
     padding-right: 10%;
     padding-top: 1%;
     padding-bottom: 2%;
-    border: 1px solid #000;
     width: 100%;
-
+    background: skyblue;
+    border-bottom:  black solid 2px;
   
 }
 
@@ -31,7 +31,7 @@ nav ul li.logo {
     flex: 1;
     font-size: 45px;
     font-weight: 700;
-    letter-spacing: 4px;
+    letter-spacing: 8px;
     text-align: center;
 }
 /*Adds styling to the nav bars search*/
@@ -51,6 +51,7 @@ nav ul .search input{
     padding: 0 10px;
     outline: none;
     color: black;
+    border: solid black;
     background-color: rgba(0, 0, 0, 0.02);
 
     border-radius: 5px 0 0 5px;
@@ -62,17 +63,17 @@ button {
     color: white;
     background-color: black;
     text-align: center;
-    padding: 14px 28px;
+    padding: 13.7px 28px;
     text-decoration: none;
     display: inline-block;
-    font-size: 10px;
-    border-radius: 1px;
+    font-size: 11px;
+    border-radius: 0px;
 }
 /*Adds styling to the overall body*/
 body {
     background: #efefbb;
     background: linear-gradient(to right, #d4d3dd, #efefbb);
-    
+    background-image: url(images/bg.png);
     display: flex;
     flex-direction: column;
     align-items: center;
