@@ -158,6 +158,7 @@ let searchIndex;
 let searchName;
 let buttonName;
 let buttonIndex;
+
   
 //For loop to go through the 20 pokemon and add each of their own boxes with their various descriptions
 for(let i = 0; i<20; i++){
@@ -190,6 +191,7 @@ document.getElementsByClassName("type1")[i].style.background = `${typeColors[pkm
 document.getElementsByClassName("type2")[i].style.border = `2px solid ${typeColors[pkmn["type 2"]]}`;
 document.getElementsByClassName("type2")[i].style.background = `${typeColors[pkmn["type 2"]]}`;
 
+/*
 //Search Functionality for Names
 buttonName = document.querySelectorAll("button")[0];
 buttonName.onclick = () => {
@@ -200,7 +202,9 @@ buttonName.onclick = () => {
     else {
         alert(" Name:"+pokemon.find(pokemon => pokemon.name == searchName).name + " \n Type1 :" +pokemon.find(pokemon => pokemon.name == searchName)["type 1"]+ " \n Type2 :" + pokemon.find(pokemon => pokemon.name == searchName)["type 2"] + " \n Index :" +pokemon.find(pokemon => pokemon.name == searchName).number);
     }
-};
+    */
+
+/*
 //Search Functionality for Index Number
 buttonIndex = document.querySelectorAll("button")[1];
 buttonIndex.onclick = () => {
@@ -212,5 +216,15 @@ buttonIndex.onclick = () => {
         alert(" Name:"+pokemon.find(pokemon => pokemon.number == searchIndex).name + " \n Type1 :" +pokemon.find(pokemon => pokemon.number == searchIndex)["type 1"]+ " \n Type2 :" + pokemon.find(pokemon => pokemon.number == searchIndex)["type 2"]+ " \n Index :" +pokemon.find(pokemon => pokemon.number == searchIndex).number);
     }
 };
+*/
 }
+searchName = document.getElementById('search1');
+searchIndex = document.getElementById('search2');
+
+searchName.addEventListener('keyup',(e)=>{
+    let target = (e.target.value).toLowerCase();
+    pokemon.filter (pokemon => pokemon.name.toLowerCase().includes(target));
+    console.log(target);
+    console.log(pokemon.filter (pokemon => pokemon.name.toLowerCase().includes(target)))
+} );
 
