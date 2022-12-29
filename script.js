@@ -196,10 +196,28 @@ let searchName = document.getElementById('search1');
 
 searchName.addEventListener('keyup',(e)=>{
     let target = (e.target.value).toLowerCase();
+    if(typeof target === "string"){
     let duplicatedPokemon = pokemon;
     let filteredPokemon = duplicatedPokemon.filter(poke => poke.name.toLowerCase().includes(target));
     console.log(filteredPokemon);
-
+    }
+    else {
+        console.log('please enter a character')
+    }
 } );
+
+//Creates a new Div above with search index
+let searchIndex = document.getElementById('search2');
+searchIndex.addEventListener('keyup', (e)=> {
+    let target = (e.target.value).toLowerCase();
+    if(typeof target === "string"){
+    let duplicatedPokemon = pokemon;
+    filteredPokemon = duplicatedPokemon.filter(poke => poke.number.includes(target))
+    console.log(filteredPokemon);
+    }
+    else {
+        console.log('please enter a number')
+    }
+})
 
 
