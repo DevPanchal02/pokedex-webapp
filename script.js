@@ -250,10 +250,10 @@ function filteredSearchDiv (values) {
         let pokeElement = document.createElement("div");
         pokeElement.classList.add('pokemon');
         let pokeHtml = '<div class="img-container"> '
- + `<img src="images/${i+1}.png" alt=""> `
+ + `<img src="images/${parseInt(values[i].id)+1}.png" alt=""> `
  +`</div> `
  +`<div class="info"> `
- +`     <span class="number">${values[i].number}</span> `
+ +`     <span class="number">${values[i].id}</span> `
  +`       <br> `
  +`       <span class="name">${values[i].name}</span> `
  +`       <br> `
