@@ -210,8 +210,9 @@ searchName.addEventListener('keyup',(e)=>{
     filiteredPokeDiv.id = "search-poke-card";
     filiteredPokeDiv.className = "search-poke-card";
     searchDiv.appendChild(filiteredPokeDiv);
-
+    if(filteredPokemon.length !== duplicatedPokemon.length){
     filteredSearchDiv(filteredPokemon);
+    }
     console.log(filteredPokemon);
     }
     else {
