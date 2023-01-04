@@ -191,7 +191,7 @@ document.getElementsByClassName("type2")[i].style.background = `${typeColors[pkm
 
 }
 
-//Creates a new Div above with search name
+//searches through array with name
 let searchName = document.getElementById('search1');
 
 searchName.addEventListener('keyup',(e)=>{
@@ -219,7 +219,7 @@ searchName.addEventListener('keyup',(e)=>{
     }
 } );
 
-//Creates a new Div above with search index
+//Searches through array with number
 let searchIndex = document.getElementById('search2');
 searchIndex.addEventListener('keyup', (e)=> {
     let target = (e.target.value).toLowerCase();
@@ -244,6 +244,7 @@ searchIndex.addEventListener('keyup', (e)=> {
     }
 })
 
+//FiliteredSearchDiv method that creates a new div with the provided values
 function filteredSearchDiv (values) {
     for(let i = 0; i<values.length; i++){
         let poke_card = document.getElementById('search-poke-card');
@@ -253,7 +254,7 @@ function filteredSearchDiv (values) {
  + `<img src="images/${parseInt(values[i].id)+1}.png" alt=""> `
  +`</div> `
  +`<div class="info"> `
- +`     <span class="number">${values[i].id}</span> `
+ +`     <span class="number">${values[i].number}</span> `
  +`       <br> `
  +`       <span class="name">${values[i].name}</span> `
  +`       <br> `
