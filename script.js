@@ -195,10 +195,23 @@ document.getElementsByClassName("type2")[i].style.background = `${typeColors[pkm
 let searchName = document.getElementById('search1');
 
 searchName.addEventListener('keyup',(e)=>{
+
     let target = (e.target.value).toLowerCase();
     if(typeof target === "string"){
     let duplicatedPokemon = pokemon;
     let filteredPokemon = duplicatedPokemon.filter(poke => poke.name.toLowerCase().includes(target));
+
+    let searchDiv = document.getElementById('searchList');
+    let childDiv = document.getElementById('search-poke-card');
+    if(childDiv != null){
+        searchDiv.removeChild(childDiv);
+    }
+    let filiteredPokeDiv = document.createElement('div');
+    filiteredPokeDiv.id = "search-poke-card";
+    filiteredPokeDiv.className = "search-poke-card";
+    searchDiv.appendChild(filiteredPokeDiv);
+
+    filteredSearchDiv(filteredPokemon);
     console.log(filteredPokemon);
     }
     else {
@@ -220,4 +233,34 @@ searchIndex.addEventListener('keyup', (e)=> {
     }
 })
 
+function filteredSearchDiv (values) {
+    for(let i = 0; i<values.length; i++){
+        let poke_card = document.getElementById('search-poke-card');
+        let pokeElement = document.createElement("div");
+        pokeElement.classList.add('pokemon');
+        let pokeHtml = '<div class="img-container"> '
+ + `<img src="images/${i+1}.png" alt=""> `
+ +`</div> `
+ +`<div class="info"> `
+ +`     <span class="number">${values[i].number}</span> `
+ +`       <br> `
+ +`       <span class="name">${values[i].name}</span> `
+ +`       <br> `
+ +`       <span class="type1">${values[i]["type 1"]}</span> `
+ +`       <span class="type2">${values[i]["type 2"]}</span> `
+ +`</div> ` ;
 
+ pokeElement.innerHTML = pokeHtml;
+ poke_card.appendChild(pokeElement);
+ console.log(document.getElementsByClassName("type1")[i]);
+
+//Adds CSS Styling for the pokemon type 1 dynamically though javascript
+document.getElementsByClassName("type1")[i].style.border = `2px solid ${typeColors[values[i]["type 1"]]}`;
+document.getElementsByClassName("type1")[i].style.background = `${typeColors[values[i]["type 1"]]}`;
+
+//Adds CSS Styling for the pokemon type 2 dynamically though javascript
+document.getElementsByClassName("type2")[i].style.border = `2px solid ${typeColors[values[i]["type 2"]]}`;
+document.getElementsByClassName("type2")[i].style.background = `${typeColors[values[i]["type 2"]]}`;
+
+    }
+}
