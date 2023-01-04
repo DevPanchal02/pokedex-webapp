@@ -212,8 +212,7 @@ searchName.addEventListener('keyup',(e)=>{
     searchDiv.appendChild(filiteredPokeDiv);
     if(filteredPokemon.length !== duplicatedPokemon.length){
     filteredSearchDiv(filteredPokemon);
-    }
-    console.log(filteredPokemon);
+        }
     }
     else {
         console.log('please enter a character')
@@ -227,7 +226,18 @@ searchIndex.addEventListener('keyup', (e)=> {
     if(typeof target === "string"){
     let duplicatedPokemon = pokemon;
     filteredPokemon = duplicatedPokemon.filter(poke => poke.number.includes(target))
-    console.log(filteredPokemon);
+    let searchDiv = document.getElementById('searchList');
+    let childDiv = document.getElementById('search-poke-card');
+    if(childDiv != null){
+        searchDiv.removeChild(childDiv);
+    }
+    let filiteredPokeDiv = document.createElement('div');
+    filiteredPokeDiv.id = "search-poke-card";
+    filiteredPokeDiv.className = "search-poke-card";
+    searchDiv.appendChild(filiteredPokeDiv);
+    if(filteredPokemon.length !== duplicatedPokemon.length){
+    filteredSearchDiv(filteredPokemon);
+        }
     }
     else {
         console.log('please enter a number')
