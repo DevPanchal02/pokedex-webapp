@@ -11,14 +11,14 @@
     <nav>
         <ul>
             <li class="search", id="search1">
-                <input type="search" placeholder="Search Name" id="searchValName">
+                <input type="text" placeholder="Search Name" id="searchValName">
                 <label class="icon">
                     <button type="submit", id="buttonName">Go</button>
                 </label>
             </li>
             <li class="logo">Dev's Pokedex</li>
                 <li class="search", id="search2">
-                    <input type="search" placeholder="Search Index" id="searchValIndex">
+                    <input type="number" min="0" placeholder="Search Index" id="searchValIndex">
                     <label class="icon2">
                         <button type="submit" id="buttonIndex">Go</button>
                     </label>
@@ -27,6 +27,11 @@
 
     </nav>
     <!-- Unordered list where the pokemon cards are generated into through javascript--> 
+    <ul>
+        <div id="searchList">
+
+        </div>
+     </ul>
  <ul>
     <div class="poke-card" id="poke-card"></div>
  </ul>

@@ -154,8 +154,6 @@ let typeColors = {
     Bug: '#A6B91A',
 }
 //declares variables used
-let searchIndex;
-let searchName;
 let buttonName;
 let buttonIndex;
 
@@ -191,40 +189,90 @@ document.getElementsByClassName("type1")[i].style.background = `${typeColors[pkm
 document.getElementsByClassName("type2")[i].style.border = `2px solid ${typeColors[pkmn["type 2"]]}`;
 document.getElementsByClassName("type2")[i].style.background = `${typeColors[pkmn["type 2"]]}`;
 
-/*
-//Search Functionality for Names
-buttonName = document.querySelectorAll("button")[0];
-buttonName.onclick = () => {
-    searchName = document.getElementById('searchValName').value;
-    if (!/^[a-zA-Z]+$/.test(searchName)){   
-    alert("Please enter between A-Z and a-z");
-    }
-    else {
-        alert(" Name:"+pokemon.find(pokemon => pokemon.name == searchName).name + " \n Type1 :" +pokemon.find(pokemon => pokemon.name == searchName)["type 1"]+ " \n Type2 :" + pokemon.find(pokemon => pokemon.name == searchName)["type 2"] + " \n Index :" +pokemon.find(pokemon => pokemon.name == searchName).number);
-    }
-    */
-
-/*
-//Search Functionality for Index Number
-buttonIndex = document.querySelectorAll("button")[1];
-buttonIndex.onclick = () => {
-    searchIndex = document.getElementById('searchValIndex').value;    
-    if (!searchIndex > 0 && !searchIndex < 21){ 
-    alert("Please enter a number between 001-020");
-    }
-    else {
-        alert(" Name:"+pokemon.find(pokemon => pokemon.number == searchIndex).name + " \n Type1 :" +pokemon.find(pokemon => pokemon.number == searchIndex)["type 1"]+ " \n Type2 :" + pokemon.find(pokemon => pokemon.number == searchIndex)["type 2"]+ " \n Index :" +pokemon.find(pokemon => pokemon.number == searchIndex).number);
-    }
-};
-*/
 }
-searchName = document.getElementById('search1');
-searchIndex = document.getElementById('search2');
+
+//searches through array with name
+let searchName = document.getElementById('search1');
 
 searchName.addEventListener('keyup',(e)=>{
+
     let target = (e.target.value).toLowerCase();
-    pokemon.filter (pokemon => pokemon.name.toLowerCase().includes(target));
-    console.log(target);
-    console.log(pokemon.filter (pokemon => pokemon.name.toLowerCase().includes(target)))
+    if(typeof target === "string"){
+    let duplicatedPokemon = pokemon;
+    let filteredPokemon = duplicatedPokemon.filter(poke => poke.name.toLowerCase().includes(target));
+
+    let searchDiv = document.getElementById('searchList');
+    let childDiv = document.getElementById('search-poke-card');
+    if(childDiv != null){
+        searchDiv.removeChild(childDiv);
+    }
+    let filiteredPokeDiv = document.createElement('div');
+    filiteredPokeDiv.id = "search-poke-card";
+    filiteredPokeDiv.className = "search-poke-card";
+    searchDiv.appendChild(filiteredPokeDiv);
+    if(filteredPokemon.length !== duplicatedPokemon.length){
+    filteredSearchDiv(filteredPokemon);
+        }
+    }
+    else {
+        console.log('please enter a character')
+    }
 } );
 
+//Searches through array with number
+let searchIndex = document.getElementById('search2');
+searchIndex.addEventListener('keyup', (e)=> {
+    let target = (e.target.value).toLowerCase();
+    if(typeof target === "string"){
+    let duplicatedPokemon = pokemon;
+    filteredPokemon = duplicatedPokemon.filter(poke => poke.number.includes(target))
+    let searchDiv = document.getElementById('searchList');
+    let childDiv = document.getElementById('search-poke-card');
+    if(childDiv != null){
+        searchDiv.removeChild(childDiv);
+    }
+    let filiteredPokeDiv = document.createElement('div');
+    filiteredPokeDiv.id = "search-poke-card";
+    filiteredPokeDiv.className = "search-poke-card";
+    searchDiv.appendChild(filiteredPokeDiv);
+    if(filteredPokemon.length !== duplicatedPokemon.length){
+    filteredSearchDiv(filteredPokemon);
+        }
+    }
+    else {
+        console.log('please enter a number')
+    }
+})
+
+//FiliteredSearchDiv method that creates a new div with the provided values
+function filteredSearchDiv (values) {
+    for(let i = 0; i<values.length; i++){
+        let poke_card = document.getElementById('search-poke-card');
+        let pokeElement = document.createElement("div");
+        pokeElement.classList.add('pokemon');
+        let pokeHtml = '<div class="img-container"> '
+ + `<img src="images/${parseInt(values[i].id)+1}.png" alt=""> `
+ +`</div> `
+ +`<div class="info"> `
+ +`     <span class="number">${values[i].number}</span> `
+ +`       <br> `
+ +`       <span class="name">${values[i].name}</span> `
+ +`       <br> `
+ +`       <span class="type1">${values[i]["type 1"]}</span> `
+ +`       <span class="type2">${values[i]["type 2"]}</span> `
+ +`</div> ` ;
+
+ pokeElement.innerHTML = pokeHtml;
+ poke_card.appendChild(pokeElement);
+ console.log(document.getElementsByClassName("type1")[i]);
+
+//Adds CSS Styling for the pokemon type 1 dynamically though javascript
+document.getElementsByClassName("type1")[i].style.border = `2px solid ${typeColors[values[i]["type 1"]]}`;
+document.getElementsByClassName("type1")[i].style.background = `${typeColors[values[i]["type 1"]]}`;
+
+//Adds CSS Styling for the pokemon type 2 dynamically though javascript
+document.getElementsByClassName("type2")[i].style.border = `2px solid ${typeColors[values[i]["type 2"]]}`;
+document.getElementsByClassName("type2")[i].style.background = `${typeColors[values[i]["type 2"]]}`;
+
+    }
+}
