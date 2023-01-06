@@ -154,7 +154,7 @@ function filteredSearchDiv (values) {
         let pokeElement = document.createElement("div");
         pokeElement.classList.add('pokemon');
         let pokeHtml = '<div class="img-container"> '
- + `<img src="images/${parseInt(values[i].id)+1}.png" alt=""> `
+ + `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${parseInt(values[i].id)+1}.png" alt=""> `
  +`</div> `
  +`<div class="info"> `
  +`     <span class="number">${values[i].number}</span> `
@@ -179,8 +179,6 @@ document.getElementsByClassName("type2")[i].style.background = `${typeColors[val
 
     }
 }
-    
-
 }
 fillData();
   
