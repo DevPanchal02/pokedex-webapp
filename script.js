@@ -1,174 +1,77 @@
-//Data used for the 20 Pokemon in this application
-let pokemon =  [
-    {
-        "id": "0",
-        "number": "001",
-        "name": "Bulbasaur",
-        "type 1": "Grass",
-        "type 2": "Poison" 
-    },
-    {
-        "id": "1",
-        "number": "002",
-        "name": "Ivysaur",
-        "type 1": "Grass",
-        "type 2": "Poison" 
-    },
-    {
-        "id": "2",
-        "number": "003",
-        "name": "Venusaur",
-        "type 1": "Grass",
-        "type 2": "Poison" 
-    },
-    {
-        "id": "3",
-        "number": "004",
-        "name": "Charmander",
-        "type 1": "Fire",
-        "type 2": "" 
-    },
-    {
-        "id": "4",
-        "number": "005",
-        "name": "Charmeleon",
-        "type 1": "Fire",
-        "type 2": "" 
-    },
-    {
-        "id": "5",
-        "number": "006",
-        "name": "Charizard",
-        "type 1": "Fire",
-        "type 2": "Flying" 
-    },
-    {
-        "id": "6",
-        "number": "007",
-        "name": "Squirtle",
-        "type 1": "Water",
-        "type 2": "" 
-    },
-    {
-        "id": "7",
-        "number": "008",
-        "name": "Wartortle",
-        "type 1": "Water",
-        "type 2": "" 
-    },
-    {
-        "id": "8",
-        "number": "009",
-        "name": "Blastoise",
-        "type 1": "Water",
-        "type 2": "" 
-    },
-    {
-        "id": "9",
-        "number": "010",
-        "name": "Caterpie",
-        "type 1": "Bug",
-        "type 2": "" 
-    },
-    {
-        "id": "10",
-        "number": "011",
-        "name": "Metapod",
-        "type 1": "Bug",
-        "type 2": "" 
-    },
-    {
-        "id": "11",
-        "number": "012",
-        "name": "Buterfree",
-        "type 1": "Bug",
-        "type 2": "Flying" 
-    },
-    {
-        "id": "12",
-        "number": "013",
-        "name": "Weedle",
-        "type 1": "Bug",
-        "type 2": "Poison" 
-    },
-    {
-        "id": "13",
-        "number": "014",
-        "name": "Kakuna",
-        "type 1": "Bug",
-        "type 2": "Poison" 
-    },
-    {
-        "id": "14",
-        "number": "015",
-        "name": "Beedrill",
-        "type 1": "Bug",
-        "type 2": "Poison" 
-    },
-    {
-        "id": "15",
-        "number": "016",
-        "name": "Pidgey",
-        "type 1": "Normal",
-        "type 2": "Flying" 
-    },
-    {
-        "id": "16",
-        "number": "017",
-        "name": "Pidgeotto",
-        "type 1": "Normal",
-        "type 2": "Flying" 
-    },
-    {
-        "id": "17",
-        "number": "018",
-        "name": "Pidgeot",
-        "type 1": "Normal",
-        "type 2": "Flying" 
-    },
-    {
-        "id": "18",
-        "number": "019",
-        "name": "Rattata",
-        "type 1": "Normal",
-        "type 2": "" 
-    },
-    {
-        "id": "19",
-        "number": "020",
-        "name": "Raticate",
-        "type 1": "Normal",
-        "type 2": "" 
-    }
-  ]
-
 //Data for pokemon type colors
 let typeColors = {
     //pokemon types normal, fire, water, grass, poison, flying, bug
-    Normal: '#A8A77A',
+	Normal: '#A8A77A',
 	Fire: '#EE8130',
 	Water: '#6390F0',
+	Electric: '#F7D02C',
 	Grass: '#7AC74C',
-    Poison: '#A33EA1',
-    Flying: '#A98FF3',
-    Bug: '#A6B91A',
+	Ice: '#96D9D6',
+	Fighting: '#C22E28',
+	Poison: '#A33EA1',
+	Ground: '#E2BF65',
+	Flying: '#A98FF3',
+	Psychic: '#F95587',
+	Bug: '#A6B91A',
+	Rock: '#B6A136',
+	Ghost: '#735797',
+	Dragon: '#6F35FC',
+	Dark: '#705746',
+	Steel: '#B7B7CE',
+	Fairy: '#D685AD',
 }
+
 //declares variables used
 let buttonName;
 let buttonIndex;
 
-  
+//Runs through for loop calling getPokemon for each instance of i
+
+const getPokemon = async () => {
+    let pokemon =  [];
+    for (let i = 1; i<152; i++){
+        const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
+        const res = await fetch(url);
+        const pokemonapi = await res.json();
+        let type2;
+        if(pokemonapi.types[1] != null){
+            type2 = pokemonapi.types[1].type.name
+        }
+        else {
+            type2 = "";
+        }
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+          }
+        let apiPokemon = {
+            "id": (i - 1).toString(),
+            "number": pokemonapi.id.toString().padStart(3, '0'),
+            "name":   capitalizeFirstLetter(pokemonapi.name),
+            "type 1": capitalizeFirstLetter(pokemonapi.types[0].type.name),
+            "type 2": capitalizeFirstLetter(type2)
+     
+        }
+        pokemon.push(apiPokemon);
+    }
+    return pokemon
+}
+
+//Async Function that calls getPokemon and builds the website with the data received
+const fillData = async () => {
+let pokemon = await getPokemon();
 //For loop to go through the 20 pokemon and add each of their own boxes with their various descriptions
-for(let i = 0; i<20; i++){
+for(let i = 0; i<pokemon.length; i++){
     //stores pokemon from the Object array into the variable pkmn based on the ID Number thats assigned
     let pkmn = pokemon.find(pokemon => pokemon.id == i);
     //variables to help create the HTML Elements
     let poke_card = document.getElementById('poke-card');
     let pokeElement = document.createElement("div");
     pokeElement.classList.add('pokemon');
+    console.log(pokemon.length);
+
 //Creates the HTML Elements dynamically from javaScript and inserts all pokemon into an unOrdered List
 let pokeInnerHtml = '<div class="img-container"> '
- + `<img src="images/${i+1}.png" alt=""> `
+ + `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i+1}.png"> `
  +`</div> `
  +`<div class="info"> `
  +`     <span class="number">${pkmn.number}</span> `
@@ -276,3 +179,8 @@ document.getElementsByClassName("type2")[i].style.background = `${typeColors[val
 
     }
 }
+    
+
+}
+fillData();
+  
