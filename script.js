@@ -102,7 +102,7 @@ searchName.addEventListener('keyup',(e)=>{
     let target = (e.target.value).toLowerCase();
     if(typeof target === "string"){
     let duplicatedPokemon = pokemon;
-    let filteredPokemon = duplicatedPokemon.filter(poke => poke.name.toLowerCase().includes(target));
+    let filteredPokemon = duplicatedPokemon.filter(poke => poke.name.toLowerCase().includes(target) || poke.number.includes(target));
 
     let searchDiv = document.getElementById('searchList');
     let childDiv = document.getElementById('search-poke-card');

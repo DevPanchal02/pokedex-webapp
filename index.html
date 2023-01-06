@@ -10,22 +10,22 @@
 <body>
     <nav>
         <ul>
-            <li class="search", id="search1">
-                <input type="text" placeholder="Search Name" id="searchValName">
-                <label class="icon">
-                    <button type="submit", id="buttonName">Go</button>
-                </label>
-            </li>
-            <li class="logo">Dev's Pokedex</li>
-                <li class="search", id="search2">
-                    <input type="number" min="0" placeholder="Search Index" id="searchValIndex">
-                    <label class="icon2">
-                        <button type="submit" id="buttonIndex">Go</button>
-                    </label>
-                </li>
+           <li class="logo">Dev's Pokédex</li>
+           <li class="btn"><span class="fas fa-bars"></span></li>
+           <div class="items">
+              <li><a href="#">Kanto</a></li>
+              <li><a href="#">Jhoto</a></li>
+              <li><a href="#">Hoenn</a></li>
+              <li><a href="#">Sinnoh</a></li>
+              <li><a href="#">Kalos</a></li>
+              <li><a href="#">Alola</a></li>
+              <li><a href="#">Galar</a></li>
+           </div>
+           <li class="search-icon", id="search1">
+              <input type="text" placeholder="Search">
+           </li>
         </ul>
-
-    </nav>
+     </nav>
     <!-- Unordered list where the pokemon cards are generated into through javascript--> 
     <ul>
         <div id="searchList">
@@ -38,3 +38,12 @@
  <script src="script.js" defer></script>
 </body>
 </html>
+
+<!--
+                <li class="search", id="search1">
+                <input type="text" placeholder="Search Name" id="searchValName">
+                <label class="icon">
+                    <button type="submit", id="buttonName">Go</button>
+                </label>
+            </li>
+ -->

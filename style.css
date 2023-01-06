@@ -1,10 +1,12 @@
+@import url('https://fonts.cdnfonts.com/css/pokemon-solid');
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
 /*Adds font and styling to all elements */
 *{
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: 'Helvetica Neue', Helvetica, sans-serif
+    font-family: 'Raleway', sans-serif;
 }
 
 /*Adds styling to the navbar */
@@ -16,63 +18,68 @@ nav{
     width: 100%;
     background: skyblue;
     border-bottom:  black solid 2px;
+    background: #000000bf;
+    padding: 25px 40px 25px 70px;
+    border: 1px solid #000;
+    border-left: none;
+    border-right: none;
   
 }
 
 /*Adds styling to the nav bars unordered elements*/
-nav ul {
+nav ul{
     display: flex;
     list-style: none;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-}
+  }
 /*Adds styling to the nav bars logo*/
-nav ul li.logo {
-    flex: 1;
-    font-size: 45px;
-    font-weight: 700;
-    letter-spacing: 8px;
-    text-align: center;
-}
-/*Adds styling to the nav bars search*/
-nav ul .search {
-    height: 40px;
-    width: 240px;
-    display: flex;
-    border-radius: 5px;
-    position: relative; bottom: -5px;
-
-}
+nav ul li.logo{
+    font-family: 'Pokemon Solid', sans-serif;
+    padding-right: 45%;
+    font-size: 42px;
+    color: rgb(255, 255, 255);
+  }
+  nav ul div.items{
+    padding: 0 25px;
+    display: inline-flex;
+  }
+  nav ul div.items a{
+    text-decoration: none;
+    font-size: 18px;
+    padding: 0 15px;
+    color: white;
+    padding-right: 30px;
+    position: relative; right: 540px;
+    
+  }
+  nav ul div.items a:hover{
+    color: cyan;
+  }
 ::placeholder {
     color: black;
 }
 /*Adds styling to the nav bars search input section*/
-nav ul .search input{
+nav ul .search-icon{
+    height: 40px;
+    width: 330px;
+    display: inline-flex;
+    background: #f2f2f2;
+    border-radius: 5px;
+    position: relative; right: 2%;
+  }
+  nav ul .search-icon input{
     height: 100%;
-    width: 200%;
+    width: 350px;
     border: none;
-    padding: 0 10px;
     outline: none;
-    color: black;
-    border: solid black;
-    background-color: rgba(0, 0, 0, 0.02);
-    
+    padding: 0 12px;
+    color: #000;
+    font-size: 16px;
+    border-radius: 5px;
+  }
 
-    border-radius: 5px 0 0 5px;
-    font-size: 16;
-}
-/*Adds styling to the buttons used to search*/
-button {
-    border: none;
-    color: white;
-    background-color: black;
-    text-align: center;
-    padding: 13.7px 28px;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 11px;
-    border-radius: 0px;
-}
 /*Adds styling to the overall body*/
 body {
     background: #efefbb;
@@ -160,3 +167,5 @@ body {
     color: white;
     
 }
+
+  
