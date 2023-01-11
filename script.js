@@ -27,9 +27,14 @@ let buttonIndex;
 
 //Runs through for loop calling getPokemon for each instance of i
 
-const getPokemon = async () => {
+const getPokemon = async (start, end) => {
     let pokemon =  [];
-    for (let i = 1; i<152; i++){
+    let listDiv = document.getElementById('list');
+    let childDiv = document.getElementById('poke-card');
+    if(childDiv != null) {
+        listDiv.removeChild(childDiv);
+    }
+    for (let i = start; i<end; i++){
         const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
         const res = await fetch(url);
         const pokemonapi = await res.json();
@@ -44,7 +49,8 @@ const getPokemon = async () => {
             return string.charAt(0).toUpperCase() + string.slice(1);
           }
         let apiPokemon = {
-            "id": (i - 1).toString(),
+            "id": pokemon.length,
+            "pokeNum": pokemonapi.id,
             "number": pokemonapi.id.toString().padStart(3, '0'),
             "name":   capitalizeFirstLetter(pokemonapi.name),
             "type 1": capitalizeFirstLetter(pokemonapi.types[0].type.name),
@@ -57,13 +63,19 @@ const getPokemon = async () => {
 }
 
 //Async Function that calls getPokemon and builds the website with the data received
-const fillData = async () => {
-let pokemon = await getPokemon();
+const fillData = async (start, end) => {
+let pokemon = await getPokemon(start, end);
+let listDiv = document.getElementById('list');
+console.log(pokemon)
 //For loop to go through the 20 pokemon and add each of their own boxes with their various descriptions
 for(let i = 0; i<pokemon.length; i++){
     //stores pokemon from the Object array into the variable pkmn based on the ID Number thats assigned
     let pkmn = pokemon.find(pokemon => pokemon.id == i);
     //variables to help create the HTML Elements
+    let pokeDiv = document.createElement('div');
+    pokeDiv.id = "poke-card";
+    pokeDiv.className = "poke-card";
+    listDiv.appendChild(pokeDiv);
     let poke_card = document.getElementById('poke-card');
     let pokeElement = document.createElement("div");
     pokeElement.classList.add('pokemon');
@@ -71,7 +83,7 @@ for(let i = 0; i<pokemon.length; i++){
 
 //Creates the HTML Elements dynamically from javaScript and inserts all pokemon into an unOrdered List
 let pokeInnerHtml = '<div class="img-container"> '
- + `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i+1}.png"> `
+ + `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${start+i}.png"> `
  +`</div> `
  +`<div class="info"> `
  +`     <span class="number">${pkmn.number}</span> `
@@ -153,8 +165,9 @@ function filteredSearchDiv (values) {
         let poke_card = document.getElementById('search-poke-card');
         let pokeElement = document.createElement("div");
         pokeElement.classList.add('pokemon');
+        console.log(values[i])
         let pokeHtml = '<div class="img-container"> '
- + `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${parseInt(values[i].id)+1}.png" alt=""> `
+ + `<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${parseInt(values[i].pokeNum)}.png" alt=""> `
  +`</div> `
  +`<div class="info"> `
  +`     <span class="number">${values[i].number}</span> `
@@ -167,7 +180,7 @@ function filteredSearchDiv (values) {
 
  pokeElement.innerHTML = pokeHtml;
  poke_card.appendChild(pokeElement);
- console.log(document.getElementsByClassName("type1")[i]);
+ console.log(document.getElementsByClassName("type1"));
 
 //Adds CSS Styling for the pokemon type 1 dynamically though javascript
 document.getElementsByClassName("type1")[i].style.border = `2px solid ${typeColors[values[i]["type 1"]]}`;
@@ -180,5 +193,69 @@ document.getElementsByClassName("type2")[i].style.background = `${typeColors[val
     }
 }
 }
-fillData();
-  
+fillData(1,152)
+kanto.addEventListener('click',(e) =>{
+    regionSetter('kanto');
+});
+jhoto.addEventListener('click',(e) =>{
+    regionSetter('jhoto');
+});
+hoenn.addEventListener('click',(e) =>{
+    regionSetter('hoenn');
+});
+sinnoh.addEventListener('click',(e) =>{
+    regionSetter('sinnoh');
+});
+unova.addEventListener('click',(e) =>{
+    regionSetter('unova');
+});
+kalos.addEventListener('click',(e) =>{
+    regionSetter('kalos');
+});
+alola.addEventListener('click',(e) =>{
+    regionSetter('alola');
+});
+galar.addEventListener('click',(e) =>{
+    regionSetter('galar');
+});
+const regionSetter = (selectedRegion) => {
+    kanto.attributeStyleMap.clear()
+    jhoto.attributeStyleMap.clear()
+    hoenn.attributeStyleMap.clear()
+    sinnoh.attributeStyleMap.clear()
+    unova.attributeStyleMap.clear()
+    kalos.attributeStyleMap.clear()
+    alola.attributeStyleMap.clear()
+    galar.attributeStyleMap.clear()
+    let region = document.getElementById(selectedRegion);
+    region.style.textDecoration = 'underline cyan 6px'
+    region.style.textUnderlineOffset = '1.845em'
+    region.style.color = 'cyan'
+
+    switch(selectedRegion){
+        case 'kanto':
+            fillData(1, 152)
+            break;
+         case 'jhoto':
+                fillData(152, 252)
+            break;
+        case 'hoenn':
+                fillData(252, 387)
+            break;
+        case 'sinnoh':
+                fillData(387, 494);
+            break;
+        case 'unova':
+                fillData(494, 650);
+            break;
+        case 'kalos':
+                fillData(650, 722);
+        break;
+        case 'alola':
+                fillData(722, 810);
+        break;
+        case 'galar':
+            fillData(810, 906);
+        break;
+    } 
+}
